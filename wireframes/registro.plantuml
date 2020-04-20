@@ -1,0 +1,11 @@
+@startsalt
+{
+    REGISTRO
+    Email    | "MyName   "
+    Password | "****     "
+    .|<&person><&person><&person>|.
+    [Cancel] | [  OK   ]
+    INICIA SESION
+    ~~
+}
+@endsalt

@@ -1,0 +1,18 @@
+@startuml
+salt
+{
+  {^"Desripción de la compra"
+    Precio: |50$
+    Número de boletos:| {+5|<&caret-top>
+    .|<&caret-bottom>}
+    Tipo de boletos: |3D
+    Fecha de expiración: |02/23/3123
+    Forma de pago | ^QR (Banco)^Tarjeta de Crédito^Paypal^
+  }
+  ' que numero de boletos sea spinner
+  Total: $0.00
+  [Pagar]
+
+
+}
+@enduml

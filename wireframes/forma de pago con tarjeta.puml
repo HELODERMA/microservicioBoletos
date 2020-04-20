@@ -1,0 +1,15 @@
+@startuml
+salt
+{+
+  {/ QR | <b>Tarjeta | Paypal }
+  Boletos:| 2
+  Precio total:|$5,456.42
+  {^"Campos de la tarjeta"
+  Número de tarjeta|"0023042034234"
+  Titular|"Ruslan López"
+  Mes|"01"|Año|"24"
+  CSV|""
+  }
+  [Pagar]|[Cancelar]
+}
+@enduml

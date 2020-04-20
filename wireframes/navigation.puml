@@ -1,0 +1,181 @@
+@startuml
+!pragma svek_trace on
+!pragma graphviz_dot jdot
+' scale 350 width
+(*) --> [hola]"
+{{
+salt
+{+
+REGISTRO
+    Email    | "MyName   "
+    Password | "****     "
+    .|<&person><&person><&person>|.
+    [Limpiar] | [  OK   ]
+    INICIA SESION
+    ~~
+}
+}}
+" as registrationscreen
+
+
+if "inicio sesión" then
+  --> [Click en incia sesión]"
+     {{
+     salt
+     {+
+         LOGIN
+         Email/telefono    | "MyName   "
+         Password | "****     "
+         .|<&person><&person><&person>|.
+         [Cancel] | [  OK   ]
+
+     }
+     }}
+     " as loginscreen
+
+     loginscreen --> "
+     {{
+         salt
+         {+
+             {/ <b>Cinepolis | Cinemex }
+              {^"3D"
+                 50$
+                 ~~~
+              } | {^"VIP"
+                  50$
+                  ~~~
+               }
+               {^"Normal"
+                   50$
+                   ~~~
+                }
+                {^"Funciones"
+                      Genesis|.|<&star><&star><&star><&star>
+                      ~~~
+                }
+         }
+     }}
+     " as mainpage
+     if "click price amount"
+        --> "
+             {{
+                  salt
+                  {+
+                     {^"Desripción de la compra"
+                        Precio: |50$
+                        Número de boletos:| {+5|<&caret-top>
+                        .|<&caret-bottom>}
+                        Tipo de boletos: |3D
+                        Fecha de expirción: |02/23/3123
+                        Forma de pago | ^QR (Banco)^Tarjeta de Crédito^Paypal^
+                      }
+                      ' que numero de boletos sea spinner
+                      Total: $0.00
+                      [Pagar]
+                   }
+             }}
+             " as compraboleto
+     else
+      --> "
+              {{
+                   salt
+                   {+
+                       {/ Cinepolis | <b>Cinemex }
+                        {^"3D"
+                           50$
+                           ~~~
+                        } | {^"VIP"
+                            50$
+                            ~~~
+                         }
+                         {^"Normal"
+                             50$
+                             ~~~
+                          }
+                          {^"Funciones"
+                                Genesis|.|<&star><&star><&star><&star>
+                                ~~~
+                          }
+                   }
+           }}
+              " as mainpageCinemex
+
+           mainpageCinemex --> compraboleto
+
+           if "select payment type"
+             --> [QR]"
+             {{
+                salt
+                {+
+                    {/ <b>QR | Tarjeta | Paypal }
+                      Boletos:| 2
+                        Precio total:|$5,456.42
+                      {+ QR}
+                      ' debe tener timeout para regresar a la de inicio
+                      [Cancelar]
+                      >Instrucciones pra pagar con QR
+                      ~~
+                 }
+             }}
+                 " as pagoQR
+             pagoQR --> "
+                                 {{
+                                     salt
+                                     {+
+                                          Sus códigos llegarán una vez que hallamos confirmado la transacción
+                                     }
+                                 }}
+                                 " as final
+             else
+                if "complex payment"
+                    -->[Credit card] "
+                    {{
+                        salt
+                        {+
+                             {/ QR | <b>Tarjeta | Paypal }
+                              Boletos:| 2
+                              Precio total:|$5,456.42
+                              {^"Campos de la tarjeta"
+                              Número de tarjeta|"0023042034234"
+                              Titular|"Ruslan López"
+                              Mes|"01"|Año|"24"
+                              CSV|""
+                              }
+                              [Pagar]|[Cancelar]
+                         }
+                     }}
+                    " as pagocredit
+                    pagocredit --> final
+                else
+                    -->[Paypal] "
+                    {{
+                        salt
+                        {+
+                             {/ QR | Tarjeta | <b>Paypal }
+                               Boletos:| 2
+                               Precio total:|$5,456.42
+                               [Pagar con Paypal]
+                         }
+                     }}
+                    " as pagopaypal
+
+                    pagopaypal --> final
+                endif
+           endIf
+     EndIf
+    final --> (*)
+else
+    --> [click en ok]"
+        {{
+        salt
+        {+
+            Registro exitoso
+            [  Iniciar sesión   ]
+
+        }
+        }}
+        " as sucessregistration
+
+        sucessregistration --> loginscreen
+Endif
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+salt
+{+
+  {/ QR | Tarjeta | <b>Paypal }
+  Boletos:| 2
+  Precio total:|$5,456.42
+  [Pagar con Paypal]
+
+}
+@enduml

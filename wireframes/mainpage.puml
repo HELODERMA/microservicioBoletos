@@ -1,0 +1,21 @@
+@startuml
+salt
+{+
+{/ <b>Cinepolis | Cinemex }
+ {^"3D"
+    50$
+    ~~~
+ } | {^"VIP"
+     50$
+     ~~~
+  }
+  {^"Normal"
+      50$
+      ~~~
+   }
+   {^"Funciones"
+         Genesis|.|<&star><&star><&star><&star>
+         ~~~
+   }
+}
+@enduml
