@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -31,13 +32,33 @@ public class TicketCode  implements Serializable {
 //   @GraphQLQuery(name = "id", description = "El identificador del código")
     private Long id;
 
+    /**
+     * maximum 20chars
+     * e.g. AlPH28782638
+     */
+    @Size(max = 20, min = 9)
     private String code;
 
+    /**
+     * e.g. Cinemex, Cinepolis, Hallmar
+     */
     @OneToOne
     private Chain chain;
 
+    /**
+     * dd/MM/yyyy
+     */
     @NotNull
     private Date expiration;
 
+    /**
+     * e.g. 3D, VIP, Regular
+     */
+    TeatherType teatherType;
+
+    /**
+     * e.g. true, false
+     */
     private Boolean sold;
+    //TODO a futuro cambiar este por un status: vendido apartado, disponible
 }

@@ -26,5 +26,8 @@ public class Chain {
     @GeneratedValue(strategy = GenerationType.AUTO)
 //   @GraphQLQuery(name = "id", description = "El identificador de la cadena")
     private Long id;
+    /**
+     * is an alias e.g. Cinemex
+     */
     private String name;
 }

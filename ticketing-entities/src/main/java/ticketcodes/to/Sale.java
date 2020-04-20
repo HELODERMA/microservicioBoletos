@@ -46,4 +46,6 @@ public class Sale implements Serializable {
     
     @OneToMany
     private List<TicketCodePrice> ticketCodePrices;
+
+    private Payment payment;
 }

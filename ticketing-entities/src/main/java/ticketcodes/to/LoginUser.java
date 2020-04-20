@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,6 +29,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 import static javax.persistence.FetchType.LAZY;
@@ -51,11 +53,24 @@ public class LoginUser implements Serializable {
     private Long id;
 
     //   @GraphQLQuery(name = "name", description = "El nombre de usuario")
+
+    /**
+     * e.g. ferrocarrileroardiente2
+     * a-zA-z0-9
+     */
     @NotEmpty(message = "{username.notempty}")
+    @Size(min = 6, max = 15)
     private String userName;
+
+
+    /**
+     *
+     */
     @NotEmpty(message = "{password.notempty}")
+    @Size(min = 8, max = 16)
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,16}$")
     private String password;
-//    @OneToOne(optional = true, fetch = LAZY)
+    //    @OneToOne(optional = true, fetch = LAZY)
 //    private EmployeeDetail employeeDetail;
     private boolean active;
 
