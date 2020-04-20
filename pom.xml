@@ -103,7 +103,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     </build>
     <modules>
         <module>ticketing-entities</module>
-<!--        <module>inventarios-service</module>-->
+        <module>ticketing-service</module>
 <!--        <module>inventarios-restservice</module>-->
 <!--        <module>inventarios-desktop</module>-->
 <!--        <module>inventarios-desktop-testing-api</module>-->
