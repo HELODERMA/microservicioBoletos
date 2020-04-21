@@ -25,8 +25,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <jacoco.reportPath>${project.basedir}/../target/jacoco.exec</jacoco.reportPath>
         <!--handles-->
         <maven.test.skip>false</maven.test.skip>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <build>
@@ -104,7 +104,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modules>
         <module>ticketing-entities</module>
         <module>ticketing-service</module>
-<!--        <module>inventarios-restservice</module>-->
+        <module>ticketing-restservice</module>
 <!--        <module>inventarios-desktop</module>-->
 <!--        <module>inventarios-desktop-testing-api</module>-->
     </modules>
