@@ -26,6 +26,9 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 public class TicketCode  implements Serializable {
+
+    //TODO constructor without sold
+
     @Id
     @Column(name = "ticket_code_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
